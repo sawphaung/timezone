@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>World Time Zone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading-text">World Time Zone</h1>
+
+      <div class="time-zone">
+        <div id="zone">
+          <div id="chicago">8:23 PM</div>
+          <div class="name">Chicago</div>
+        </div>
+
+        <div id="zone">
+          <div id="new-york">8:23 PM</div>
+          <div class="name">New York</div>
+        </div>
+
+        <div id="zone">
+          <div id="san-francisco">8:23 PM</div>
+          <div class="name">San Francisco</div>
+        </div>
+
+        <div id="zone">
+          <div id="japan">8:23 PM</div>
+          <div class="name">Japan</div>
+        </div>
+
+        <div id="zone">
+          <div id="myanmar">8:23 PM</div>
+          <div class="name">Myanmar</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
+
+    <script>
+      const chicago = document.getElementById('chicago');
+      const newyork = document.getElementById('new-york');
+      const sanfrancisco = document.getElementById('san-francisco');
+      const japan = document.getElementById('japan');
+      const myanmar = document.getElementById('myanmar');
+
+      function updateTime() {
+        const now = moment();
+        const clock1 = now.tz('America/Chicago').format('hh:mm:ss A');
+        const clock2 = now.tz('America/New_York').format('hh:mm:ss A');
+        const clock3 = now.tz('America/Los_Angeles').format('hh:mm:ss A');
+        const clock4 = now.tz('Asia/Tokyo').format('hh:mm:ss A');
+        const clock5 = now.tz('Asia/Yangon').format('hh:mm:ss A');
+
+        chicago.textContent = clock1;
+        newyork.textContent = clock2;
+        sanfrancisco.textContent = clock3;
+        japan.textContent = clock4;
+        myanmar.textContent = clock5;
+      }
+
+      setInterval(updateTime, 1000);
+
+      updateTime();
+    </script>
+  </body>
+</html>
